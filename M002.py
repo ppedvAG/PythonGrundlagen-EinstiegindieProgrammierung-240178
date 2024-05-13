@@ -67,7 +67,7 @@ print(range(5, 100, 5))  # Schrittgröße mitangeben
 
 print(list(range(100)))  # Nur ein Generator
 print(list(range(5, 100)))
-print(list(range(5, 100, 5))) # Schrittgröße mitangeben
+print(list(range(5, 100, 5)))  # Schrittgröße mitangeben
 
 print(range(0, 1_000_000_000))
 
@@ -121,3 +121,16 @@ print(bool(0))
 print(bool(testList))  # Prüft ob die Liste leer ist
 print(bool([]))
 print(bool(None))
+
+# Übungen
+list1 = [1, 2, 3, 4]
+list2 = [2, 3, 4, 5, 6]
+list3 = [5, 6, 7, 8]
+gesamt = list1 + list2 + list3
+gesamt = list(set(gesamt))
+print(gesamt)
+
+text = "Ich bin ein Text"
+print(list(text))
+
+print(list(range(0, 21, 2)))
