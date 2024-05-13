@@ -105,3 +105,23 @@ print(9 ** 0.5)  # Wurzel ziehen
 
 print(15 / 7)
 print(15 // 7)  # Ganzzahldivision
+
+# Übungen
+i = 4
+j = 7
+k = 10
+summe = i + j + k
+potenz = summe ** summe
+print(potenz)
+
+print(potenz % 2)
+
+v = "Max"
+n = "Mustermann"
+print((v + n).lower().count("m"))
+
+print("lukas".title())
+print("lukas".capitalize())
+print(type(v[0]))
+
+print(len(v + n + text))
