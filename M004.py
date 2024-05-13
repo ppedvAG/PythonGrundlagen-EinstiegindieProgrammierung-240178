@@ -139,7 +139,15 @@ for i in range(1, 200):
 # Übung 3:
 # Stoppuhr
 # Bevor die Minute hochtickt, müssen die Sekunden einmal eine vollkommene Umdrehung hinter sich gebracht haben
-# time.sleep(Float) Funktion hier nützlich
+# time.sleep(Float) Funktion hier nützlich ->
+# import time
+# time.sleep(...)
+
+import time
+for m in range(60):
+	for s in range(60):
+		# time.sleep(1)
+		print(f"{m:02}:{s:02}")
 
 # Übung 4:
 # Erstelle eine Schleife die das kleine Einmaleins von 1 bis 10 berechnet, und jeden einzelnen
@@ -152,3 +160,6 @@ for i in range(1, 200):
 # "7 x 4 = 28"
 # ...
 # "10 x 10 = 100"
+for x in range(1, 11):
+	for y in range(1, 11):
+		print(f"{x} x {y} = {x * y}")
