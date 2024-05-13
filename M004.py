@@ -106,6 +106,16 @@ for i in range(10):
 # Falls sie sowohl durch 3 als auch 5 teilbar ist, soll in der Konsole "FizzBuzz" ausgegeben werden
 # Falls sie weder durch 3 noch 5 teilbar ist, soll die Zahl selbst in der Konsole ausgegeben werden
 # 1, 2, Fizz, 4, Buzz, ..., 14, FizzBuzz
+for i in range(100):
+	if i % 3 == 0 and i % 5 == 0:
+		print("FizzBuzz")
+	elif i % 5 == 0:
+		print("Buzz")
+	elif i % 3 == 0:
+		print("Fizz")
+	else:
+		print(i)
+
 
 # Übung 2:
 # Schreibe eine Schleife die dir alle Zahlen von 1 bis 200 zur Verfügung stellt
@@ -114,3 +124,31 @@ for i in range(10):
 # Zahl + Endung 'st', 'nd', 'rd' oder 'th'
 # 1st, 2nd, 3rd, 4th, ..., 21st, 22nd, 23rd, 24th
 # Bonus: Berücksichtige alle Zahlen die mit 11, 12 oder 13 enden
+
+for i in range(1, 200):
+	if i % 10 == 1 and i % 100 != 11:
+		endung = "st"
+	elif i % 10 == 2 and i % 100 != 12:
+		endung = "nd"
+	elif i % 10 == 3 and i % 100 != 13:
+		endung = "rd"
+	else:
+		endung = "th"
+	print(f"{i}{endung}")
+
+# Übung 3:
+# Stoppuhr
+# Bevor die Minute hochtickt, müssen die Sekunden einmal eine vollkommene Umdrehung hinter sich gebracht haben
+# time.sleep(Float) Funktion hier nützlich
+
+# Übung 4:
+# Erstelle eine Schleife die das kleine Einmaleins von 1 bis 10 berechnet, und jeden einzelnen
+# Schritt in der Konsole ausgibt
+# "1 x 1 = 1"
+# "1 x 2 = 2"
+# ...
+# "5 x 5 = 25"
+# ...
+# "7 x 4 = 28"
+# ...
+# "10 x 10 = 100"
