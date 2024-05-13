@@ -62,3 +62,39 @@ print("z1 ist größer als z2") if z1 > z2 else print("z2 ist größer als z1") 
 print("z1 ist größer als z2" if z1 > z2 else "z2 ist größer als z1" if z1 < z2 else "z1 gleich z2")
 # while True:
 #       Statement, if, else, ...
+
+# Übung 1
+# Wir haben 3 vorgegebene Listen
+list1 = [1, 2, 3, 4]
+list2 = [2, 3, 4, 5, 6]
+list3 = [5, 6, 7]
+# Finde heraus welche Liste die längste ist (es können auch mehrere Listen die längsten sein)
+laengen = [len(list1), len(list2), len(list3)]
+maxL = max(laengen)
+if len(list1) == maxL:
+	print("...")
+if len(list2) == maxL:
+	print("...")
+if len(list3) == maxL:
+	print("...")
+
+# Übung 2
+# Nimm die oberen drei Listen und überprüfe ob eine der Listen eine der drei Zahlen enthält: 3, 7, 10
+gesamt = list1 + list2 + list3
+if 3 in gesamt or 7 in gesamt or 10 in gesamt:
+	print("...")
+
+if len(set(gesamt).intersection([3, 7, 10])) > 0:
+	print("3, 7 oder 10 sind enthalten")
+
+intersect = set(gesamt).intersection([3, 7, 10])
+if len(intersect) > 0:
+	print(str(intersect) + " ist enthalten")
+
+
+if 3 in list1 or 7 in list1 or 10 in list1:
+	print("list1 hat einer der drei Zahlen")
+if 3 in list2 or 7 in list2 or 10 in list2:
+	print("list2 hat einer der drei Zahlen")
+if 3 in list3 or 7 in list3 or 10 in list3:
+	print("list3 hat einer der drei Zahlen")
