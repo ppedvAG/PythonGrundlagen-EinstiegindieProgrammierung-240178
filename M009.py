@@ -94,3 +94,49 @@ print(person)  # Max Mustermann 30
 #     - StoppeMotor (Motor kann nur gestoppt werden, wenn das Auto nicht fährt)
 #     - Beschreibung (Gibt alle Informationen über die Klasse wieder)
 # 4. Erstelle eine Instanz der Klasse und nutze die Beschreibungs Funktion (Konkrete Werte)
+class Fahrzeug:
+	def __init__(self, name:str, preis:int, maxV: int):
+		self.name = name
+		self.preis = preis
+		self.maxV = maxV
+		self.aktV = 0
+		self.motorStatus = False
+
+	def starteMotor(self):
+		if not self.motorStatus:
+			self.motorStatus = True
+		else:
+			print("Fehler")
+
+	def stoppeMotor(self):
+		if self.motorStatus:
+			self.motorStatus = False
+		else:
+			print("Fehler")
+
+	def beschleunige(self, a):
+		if not self.motorStatus:
+			print("Fehler")
+			return
+
+		if self.aktV + a > self.maxV:
+			print("Fehler")
+			return
+
+		if self.aktV + a < 0:
+			print("Fehler")
+			return
+
+		self.aktV += a
+
+	def beschreibung(self) -> str:
+		return f"Das Fahrzeug {self.name} kostet {self.preis}€ und kann maximal {self.maxV} fahren." + \
+				f" Es fährt gerade {self.aktV}km/h." if self.motorStatus else ""
+
+fzg = Fahrzeug("VW", 20_000, 250)
+fzg.starteMotor()
+fzg.beschleunige(50)
+fzg.beschleunige(500)
+print(fzg.beschreibung())
+fzg.beschleunige(-50)
+fzg.stoppeMotor()
