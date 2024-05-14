@@ -61,3 +61,61 @@ with open("Json.json", "w") as j:  # In ein File schreiben
 json.loads(jsonListe)  # Aus einem String laden
 with open("Json.json", "r") as j:  # Aus einem File laden
 	json.load(j)
+
+# Übung 1:
+# Funktion die dem User die Möglichkeiten (w, r, a) gibt
+# User soll eine davon auswählen über input()
+# Wenn der User keine valide Möglichkeit eingibt, soll die Eingabe wiederholt werden
+# Danach soll einfach das File geöffnet werden
+# Bonus: Frage den Benutzer nach dem File, welches geöffnet werden soll
+def file():
+	while True:
+		eingabe = input("Gib einen Modus ein (w, r, a): ")
+		if eingabe.lower() in ["w", "r", "a"]:
+			pfad = input("Gib einen Dateipfad ein: ")
+			with open(pfad, eingabe) as file:
+				pass
+			break
+
+# Übung 2:
+# Erstelle ein Programm, das zwei Integer oder Floats abfragt
+# Gib dem Nutzer die Möglichkeit per Tastendruck zwischen Addition, Subtraktion, Multiplikation und Division zu wählen.
+# -> Zahl zwischen 1 und 4 -> Rechenoperation auswählen
+# Bei Ungültiger Eingabe soll der Benutzer erneut nach seiner Entscheidung gefragt werden.
+# Lasse das Ergebnis inklusive der Berechnung in der Konsole ausgeben
+# Frage nach Ende der Operation ob der Benutzer eine neue Berechnung durchführen will
+def rechner():
+	while True:
+		while True:
+			zahl1 = input("Gib eine Zahl ein: ")
+			if zahl1.isnumeric():
+				zahl1 = int(zahl1)
+				break
+
+		while True:
+			zahl2 = input("Gib eine weitere Zahl ein: ")
+			if zahl2.isnumeric():
+				zahl2 = int(zahl2)
+				break
+
+		while True:
+			rechenoperation = input("Gib eine Rechenoperation ein: \n1: Addition\n2: Subtraktion\n3: Multiplikation\n4: Division")
+			if rechenoperation.isnumeric():
+				rechenoperation = int(rechenoperation)
+				if rechenoperation in [1, 2, 3, 4]:
+					break
+
+		if rechenoperation == 1:
+			print(f"{zahl1} + {zahl2} = {zahl1 + zahl2}")
+		if rechenoperation == 2:
+			print(f"{zahl1} - {zahl2} = {zahl1 - zahl2}")
+		if rechenoperation == 3:
+			print(f"{zahl1} * {zahl2} = {zahl1 * zahl2}")
+		if rechenoperation == 4:
+			print(f"{zahl1} / {zahl2} = {zahl1 / zahl2}")
+
+		neueBerechnung = input("Neue Berechnung durchführen (Y)?")
+		if neueBerechnung.lower() != "y":
+			break
+
+rechner()
