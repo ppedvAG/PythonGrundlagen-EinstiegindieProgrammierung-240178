@@ -130,7 +130,7 @@ class Fahrzeug:
 		self.aktV += a
 
 	def beschreibung(self) -> str:
-		return f"Das Fahrzeug {self.name} kostet {self.preis}€ und kann maximal {self.maxV} fahren." + \
+		return f"{type(self).__name__} {self.name} kostet {self.preis}€ und kann maximal {self.maxV}km/h fahren." + \
 				f" Es fährt gerade {self.aktV}km/h." if self.motorStatus else ""
 
 fzg = Fahrzeug("VW", 20_000, 250)
