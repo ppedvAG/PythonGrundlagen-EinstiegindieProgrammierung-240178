@@ -24,6 +24,7 @@ except Exception as e:  # Fange alle anderen Fehler
 
 	# Traceback ausprinten
 	import traceback
+
 	for z in traceback.format_exception(e):
 		print(z)
 else:
@@ -40,6 +41,7 @@ print("Hallo")
 # Besser als print(...), weil print in der GUI/Web nicht funktioniert
 from M009 import Fahrzeug
 
+
 class Flugzeug(Fahrzeug):
 	def __init__(self, name, preis, maxV):
 		super().__init__(name, preis, maxV)
@@ -49,6 +51,7 @@ class Flugzeug(Fahrzeug):
 			self.motorStatus = True
 		else:
 			raise SystemError("Motor ist bereits gestartet")
+
 
 flugzeug = Flugzeug("Boeing 737", 123_456_789, 1000)
 flugzeug.starteMotor()
@@ -62,15 +65,37 @@ except SystemError as e:
 # Erstelle ein Programm, das den User nach zwei Integern fragt
 # Falls der User zwei Integer eingibt sollen diese addiert und das Ergebnis in der Konsole ausgegeben werden und das Programm kann beendet werden
 # Falls der Benutzer einen falschen Typen eingibt soll das Programm ihn darauf hinweisen, das nur Integer akzeptiert werden und ihn erneut nach den Zahlen fragen
+while True:
+	try:
+		z1 = int(input("Gib eine Zahl ein: "))
+		z2 = int(input("Gib eine Zahl ein: "))
+		print(z1 + z2)
+		break
+	except ValueError:
+		print("Keine Zahl eingegeben")
 
 # Übung 2
 # Definiere eine beliebige Liste
 # Erstelle ein Programm, das den User fragt, das wievielte Element in der Konsole ausgegeben werden soll
 # Falls die Zahl außerhalb des Listen-Indexes liegt soll ein Fehler geworfen und der User darauf hingewiesen werden
+test = [1, 2, 3, 4]
+try:
+	stelle = int(input("Gib eine Stelle ein: "))
+	print(test[stelle])
+except ValueError:
+	print("Keine Zahl eingegeben")
+except IndexError:
+	print("Die Zahl liegt nicht innerhalb der Grenzen der Liste")
+
 
 # Übung 3
 # Füge der beschleunigen Funktion deiner Fahrzeug-Klasse aus Modul 9 eine eigene Exception hinzu:
 #    - Sie soll geworfen werden, falls die Höchstgeschwindigkeit überschritten wird
+class VelocityException(Exception):
+	pass
+
+
+# raise VelocityException("Die neue Geschwindigkeit ist zu hoch")
 
 # Übung 4
 # Erweitere den Rechner aus Übung 7:
@@ -79,3 +104,33 @@ except SystemError as e:
 # Die InputLesen Methode soll in einer Endlosschleife vom Benutzer Werte einlesen, bis dieser eine Zahl eingegeben hat
 # Prüfe bei dieser Methode mittels try-except, ob die Eingabe des Benutzers valide ist (Exception bei der int(...) Methode abfangen)
 # Verwende danach drei mal die InputLesen Methode um die Werte zu erhalten und im Anschluss die Berechne Methode um die Berechnung mit den Werten durchzuführen
+class Rechner:
+	def berechne(self, zahl1, zahl2, rechenoperation):
+		if rechenoperation == 1:
+			print(f"{zahl1} + {zahl2} = {zahl1 + zahl2}")
+		elif rechenoperation == 2:
+			print(f"{zahl1} - {zahl2} = {zahl1 - zahl2}")
+		elif rechenoperation == 3:
+			print(f"{zahl1} * {zahl2} = {zahl1 * zahl2}")
+		elif rechenoperation == 4:
+			print(f"{zahl1} / {zahl2} = {zahl1 / zahl2}")
+		else:
+			print("Keine gültige Rechenoperation eingegeben")
+
+	def inputLesen(self, text):
+		while True:
+			try:
+				eingabe = input(text)
+				zahl = int(eingabe)
+				return zahl
+			except ValueError:
+				print("Keine Zahl eingegeben")
+
+
+r = Rechner()
+z1 = r.inputLesen("Gib eine Zahl ein: ")
+z2 = r.inputLesen("Gib eine weitere Zahl ein: ")
+art = 0
+while art not in [1, 2, 3, 4]:
+	art = r.inputLesen("Gib eine Rechenoperation ein: \n1: Addition\n2: Subtraktion\n3: Multiplikation\n4: Division")
+r.berechne(z1, z2, art)
